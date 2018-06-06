@@ -1,0 +1,25 @@
+<!--pages/detail/detail.wxml-->
+<view class='detail'>
+  <view class='header'>
+     <view class='article-title'>{{newsTitle}}</view>
+     <view class='news-source'>{{newsSource}} {{newsDate}}</view>
+     <view class='readCount'>阅读次数 {{newsReadCount}}</view>
+  </view>
+   <view class='content' wx:for="{{newsContent}}" wx:key="{{item.id}}">
+    <view wx:if="{{item.type=='strong'}}">
+      <view class='contentTip'>
+        {{item.text}}
+      </view>
+    </view>
+    <view wx:elif="{{item.type=='image'}}">
+      <image class='img' src='{{item.src}}'></image>
+    </view>
+     <view wx:if="{{item.type=='p'}}">
+     <view class='article-content'>
+      {{item.text}}
+     </view>     
+     </view>
+  </view> 
+ 
+  <loading hidden='{{indexIsHidden}}'>正在加载</loading>
+</view>
